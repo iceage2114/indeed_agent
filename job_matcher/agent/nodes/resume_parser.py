@@ -1,26 +1,11 @@
 ﻿"""
-parse_resume node — reads the resume file, extracts raw text, and calls the LLM
-to produce a structured JSON summary of the candidate.
+parse_resume node — reads the resume file and extracts raw text.
 """
 
 from pathlib import Path
 
-import config
 from agent.state import AgentState
 
-
-def _get_llm():
-    from langchain_openai import ChatOpenAI
-
-    api_key  = config.OPENAI_API_KEY or config.GITHUB_TOKEN
-    base_url = None if config.OPENAI_API_KEY else config.LLM_BASE_URL
-
-    return ChatOpenAI(
-        model=config.LLM_MODEL,
-        api_key=api_key,
-        base_url=base_url,
-        temperature=0,
-    )
 
 
 def _extract_text(path: Path) -> str:
@@ -40,12 +25,7 @@ def _extract_text(path: Path) -> str:
 
 
 def parse_resume(state: AgentState) -> dict:
-    """
-    LangGraph node.
-
-    Loads from cache/resume_cache.json when the file mtime matches, otherwise
-    extracts text and calls the LLM for a structured JSON summary.
-    """
+    """LangGraph node. Extracts raw text from the resume file."""
     path = Path(state["resume_path"])
 
     if not path.exists():
@@ -58,22 +38,7 @@ def parse_resume(state: AgentState) -> dict:
 
     print(f"[parse_resume] Extracted {len(resume_text)} characters from {path.name}")
 
-    # LLM call — structured summary
-    llm = _get_llm()
-    system_msg = (
-        "Extract a structured summary from this resume. "
-        "Return ONLY valid JSON with keys: name, contact, years_experience, "
-        "tech_skills (list), soft_skills (list), education (list), "
-        "certifications (list), target_roles (list), profile (str)."
-    )
-    from langchain_core.messages import HumanMessage, SystemMessage
-    response = llm.invoke([SystemMessage(content=system_msg), HumanMessage(content=resume_text)])
-    resume_summary = response.content
-
-    print(f"[parse_resume] Resume summary generated ({len(resume_summary)} chars)")
-
     return {
-        "resume_text":    resume_text,
-        "resume_summary": resume_summary,
-        "error":          None,
+        "resume_text": resume_text,
+        "error":       None,
     }

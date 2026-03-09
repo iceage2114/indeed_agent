@@ -101,21 +101,16 @@ def query_chroma(state: RetrievalState) -> dict:
         # ChromaDB cosine collection stores distance = 1 - cosine_similarity
         similarity = 1.0 - dist
         candidates.append({
-            "id":                 job_id,
-            "title":             meta.get("title", ""),
-            "company":           meta.get("company", ""),
-            "location":          meta.get("location", ""),
-            "description":       desc_map.get(job_id, ""),
-            "url":               meta.get("url", ""),
-            "date_posted":       meta.get("date_posted", ""),
-            "field":             meta.get("field", ""),
-            "easy_apply":        meta.get("easy_apply", "False") == "True",
-            "embedding":         None,   # not needed downstream
-            "similarity_score":  similarity,
-            "full_description":  None,
-            "match_score":       None,
-            "match_reasoning":   None,
-            "top_skills_matched": None,
+            "id":               job_id,
+            "title":            meta.get("title", ""),
+            "company":          meta.get("company", ""),
+            "location":         meta.get("location", ""),
+            "description":      desc_map.get(job_id, ""),
+            "url":              meta.get("url", ""),
+            "date_posted":      meta.get("date_posted", ""),
+            "field":            meta.get("field", ""),
+            "easy_apply":       meta.get("easy_apply", "False") == "True",
+            "similarity_score": similarity,
         })
 
     top = candidates[:config.TOP_N]

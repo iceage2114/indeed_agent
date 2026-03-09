@@ -43,10 +43,8 @@ def main() -> None:
         "resume_path": str(resume_path),
         "resume_text": "",
         "resume_embedding": [],
-        "resume_summary": "",
         "all_jobs": [],
         "top_candidates": [],
-        "enriched_matches": [],
         "final_report_path": "",
         "error": None,
     }
