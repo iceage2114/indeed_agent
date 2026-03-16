@@ -1,0 +1,11 @@
+# Cover Letter Template
+
+Paste your cover letter template here. Keep `{{placeholders}}` if you use any, or just use it as plain text.
+
+---
+
+[Your cover letter content here]
+I am writing to express my interest in the Junior AI Software Engineer position at Leidos. I want to develop as an engineer building AI-enabled systems that need to be reliable, integrated, and defensible in production. Leidos applies AI and machine learning in domains where the technology has to perform under real constraints, and that is what interests me in the company specifically. As a recent American University graduate with a B.S. in Computer Science and hands-on experience in Python, FastAPI, Docker, and Azure, I am looking to bring that foundation into an organization working on problems where the engineering decisions actually carry weight. 
+My technical background encompasses the full software development lifecycle. I have built production-grade applications using modern frameworks such as Next.js, React, and FastAPI, with experience in both frontend and backend development. Through projects like my Personal News Hub, I implemented load balancing, API integration, and LLM-powered features, including sentiment analysis and content clustering. I am proficient in Python and JavaScript, with practical experience in SQL database design, Azure cloud deployment, and containerization with Docker. My work demonstrates strong system integration skills, from normalizing inconsistent API responses into unified schemas to implementing secure user authentication with Clerk.
+Additionally, my professional experience has developed crucial soft skills for collaborative engineering environments. During my IT internship at Lerch, Early, & Brewer, I managed enterprise infrastructure for 75+ endpoints, coordinated system deployments, and maintained technical documentation for security compliance programs. This experience taught me to troubleshoot systematically, communicate technical concepts clearly to non-technical stakeholders, and balance multiple priorities in fast-paced environments. These skills translate directly to working within engineering teams, participating in code reviews, and delivering reliable software under a deadline.
+Thank you for considering my application.
